@@ -8,21 +8,22 @@ sample_packing: false
 
 chat_template: qwen2_vl
 datasets:
-  - path: e-zorzi/reasoning_distractors_chat_score
+  - path: e-zorzi/reasoning_distractors_choice_chat_only
     type: chat_template
     split: train
-
-dataset_prepared_path: last_run_prepared
+    revision: small
 
 test_datasets:
-  - path: e-zorzi/reasoning_distractors_chat_score
+  - path: e-zorzi/reasoning_distractors_choice_chat_only
     type: chat_template
     split: val_seen[:3%]
-  - path: e-zorzi/reasoning_distractors_chat_score
+    revision: small
+  - path: e-zorzi/reasoning_distractors_choice_chat_only
     type: chat_template
     split: val_unseen[:3%]
+    revision: small
 
-output_dir: ./outputs/qwen2_5_VL_7B_lora_scoreonly
+output_dir: ./outputs/qwen2_5_VL_7B_lora_only
 
 load_in_8bit: True
 adapter: lora
@@ -44,10 +45,10 @@ wandb_log_model:
 
 gradient_accumulation_steps: 4
 micro_batch_size: 8
-num_epochs: 15
+num_epochs: 2
 optimizer: adamw_bnb_8bit
 lr_scheduler: cosine
-learning_rate: 0.0002
+#learning_rate: 0.0002
 
 bf16: true
 fp16:
@@ -58,10 +59,16 @@ logging_steps: 1
 flash_attention: true
 eager_attention:
 
-warmup_ratio: 0.0067
-evals_per_epoch: 3
+warmup_steps: 60
+evals_per_epoch: 0
 saves_per_epoch: 1
 save_strategy: epoch
 weight_decay: 0.0
+
+#warmup_ratio: 0.0067
+#evals_per_epoch: 3
+#saves_per_epoch: 1
+#save_strategy: epoch
+#weight_decay: 0.0
 
 # save_first_step: true  # uncomment this to validate checkpoint saving works with your config
