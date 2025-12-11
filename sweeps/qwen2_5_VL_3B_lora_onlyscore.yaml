@@ -13,23 +13,13 @@ datasets:
     split: train
     revision: small
 
-test_datasets:
-  - path: e-zorzi/reasoning_distractors_choice_chat_only
-    type: chat_template
-    split: val_seen[:3%]
-    revision: small
-  - path: e-zorzi/reasoning_distractors_choice_chat_only
-    type: chat_template
-    split: val_unseen[:3%]
-    revision: small
-
-output_dir: ./outputs/qwen2_5_VL_3B_lora_only
+output_dir: outputs/qwen2_5_VL_3B_lora_only
 
 load_in_8bit: True
 adapter: lora
 lora_model_dir:
 
-sequence_len: 2046 #8192
+sequence_len: 2048 #8192
 pad_to_sequence_len: false
 
 lora_r: 128
@@ -37,14 +27,14 @@ lora_alpha: 16
 lora_dropout: 0.05
 lora_target_modules: 'model.language_model.layers.[\d]+.(mlp|cross_attn|self_attn).(up|down|gate|q|k|v|o)_proj'
 
-wandb_project: axolotl_finetunes
+wandb_project: axolotl_sweeps
 wandb_entity: edo_vi
 wandb_watch:
 wandb_name:
 wandb_log_model:
 
-gradient_accumulation_steps: 8
-micro_batch_size: 8
+gradient_accumulation_steps: 1
+micro_batch_size: 64
 num_epochs: 2
 optimizer: adamw_bnb_8bit
 lr_scheduler: cosine
