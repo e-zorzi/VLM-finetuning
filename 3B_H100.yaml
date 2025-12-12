@@ -13,6 +13,18 @@ datasets:
     split: train
     revision: small
 
+test_datasets:
+  - path: e-zorzi/reasoning_distractors_choice_chat
+    type: chat_template
+    split: val_seen[:10%]
+    revision: small
+  - path: e-zorzi/reasoning_distractors_choice_chat
+    type: chat_template
+    split: val_unseen[:10%]
+    revision: small
+  
+output_dir: ../ut-persistent/outputs/qwen2_5_VL_3B_lora
+
 load_in_8bit: True
 adapter: lora
 lora_model_dir:
@@ -31,12 +43,12 @@ wandb_watch:
 wandb_name:
 wandb_log_model:
 
-gradient_accumulation_steps: 1
-micro_batch_size: 64
-num_epochs: 2
+gradient_accumulation_steps: 2
+micro_batch_size: 32
+num_epochs: 15
 optimizer: adamw_bnb_8bit
 lr_scheduler: cosine
-#learning_rate: 0.0002
+learning_rate: 0.001
 
 bf16: true
 fp16:

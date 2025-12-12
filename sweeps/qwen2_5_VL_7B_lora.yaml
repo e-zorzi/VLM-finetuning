@@ -13,8 +13,6 @@ datasets:
     split: train
     revision: small
 
-output_dir: outputs/qwen2_5_VL_3B_lora
-
 load_in_8bit: True
 adapter: lora
 lora_model_dir:
