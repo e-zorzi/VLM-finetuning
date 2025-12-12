@@ -59,12 +59,6 @@ logging_steps: 1
 flash_attention: true
 eager_attention:
 
-warmup_steps: 60
-evals_per_epoch: 0
-saves_per_epoch: 0
-save_strategy: epoch
-weight_decay: 0.0
-
 warmup_ratio: 0.0067
 evals_per_epoch: 3
 saves_per_epoch: 1
