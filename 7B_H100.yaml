@@ -37,7 +37,7 @@ lora_alpha: 16
 lora_dropout: 0.05
 lora_target_modules: 'model.language_model.layers.[\d]+.(mlp|cross_attn|self_attn).(up|down|gate|q|k|v|o)_proj'
 
-wandb_project: axolotl_sweeps
+wandb_project: axolotl_finetunes
 wandb_entity: edo_vi
 wandb_watch:
 wandb_name:
