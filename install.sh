@@ -1,3 +1,5 @@
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
 export UV_TORCH_BACKEND=cu126
 uv venv --no-project --relocatable
 source .venv/bin/activate
