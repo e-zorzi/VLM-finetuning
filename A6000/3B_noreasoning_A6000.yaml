@@ -23,7 +23,7 @@ test_datasets:
     split: val_unseen[:5%]
     revision: small
   
-output_dir: outputs/qwen2.5_3B_choice_only
+output_dir: outputs/qwen2.5_3B_choice_noreasoning
 
 load_in_8bit: True
 adapter: lora
