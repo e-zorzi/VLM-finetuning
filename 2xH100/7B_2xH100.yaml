@@ -23,7 +23,7 @@ test_datasets:
     split: val_unseen[:20%]
 
 
-output_dir: ../ut-persistent/outputs/qwen2_5_VL_7B_lora
+output_dir: ../ctex-persistent/outputs/qwen2_5_VL_7B_lora
 
 load_in_8bit: True
 adapter: lora
