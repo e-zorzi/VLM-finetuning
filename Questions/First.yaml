@@ -45,7 +45,7 @@ micro_batch_size: 64
 num_epochs: 1
 optimizer: adamw_bnb_8bit
 lr_scheduler: cosine
-#learning_rate: 0.0005
+learning_rate: 0.0002
 
 bf16: true
 fp16:

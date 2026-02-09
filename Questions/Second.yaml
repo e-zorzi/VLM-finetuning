@@ -1,4 +1,4 @@
-base_model: e-zorzi/Qwen2.5-VL-7B-Instruct-tuned-final-questions
+base_model: e-zorzi/Qwen2.5-VL-7B-Instruct-tuned-final-questions_v0
 processor_type: AutoProcessor
 
 # these 3 lines are needed for now to handle vision chat templates w images
@@ -15,7 +15,7 @@ datasets:
 test_datasets:
   - path: e-zorzi/reasoning_distractors_choice_chat_questions_2
     type: chat_template
-    split: val
+    split: val[:50%]
 
 output_dir: ../ct-texas/first
 
@@ -39,10 +39,10 @@ wandb_log_model:
 
 gradient_accumulation_steps: 2
 micro_batch_size: 64
-num_epochs: 1
+num_epochs: 15
 optimizer: adamw_bnb_8bit
 lr_scheduler: cosine
-#learning_rate: 0.0005
+learning_rate: 0.001
 
 bf16: true
 fp16:
